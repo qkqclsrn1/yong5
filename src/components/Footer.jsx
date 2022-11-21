@@ -1,15 +1,13 @@
-import React from 'react'
-import {Container, Box} from "@chakra-ui/react"
+import { Box, chakra, Container, Stack, Text, Flex } from "@chakra-ui/react";
 
-
-const Footer = () => {
-  return(
-    <Container as="footer" role="contentinfo" display="flex" flexDir="column"}>
-      <Box bg="tomato" w="100%" p={4} color="white" fontSize={30}>
-     This is Footer
-      </Box>
-    </Container>
+export default function Footer() {
+  return (
+    <Box pos={"fixed"} bottom={0} width={"100%"} color={"white"}>
+      <Flex bg={"rgba(0,0,0,0.7)"} minH={"50px"}>
+        <Container py={6} direction={"row"} justify={"center"} align={"center"}>
+          <Text fontSize={18}>© 2022 0xchips. All rights reserved</Text>
+        </Container>
+      </Flex>
+    </Box>
   );
 }
-
-export default Footer
