@@ -7,14 +7,17 @@ import {
   Stack,
   Button,
   Image,
- Flex
+  Flex,
 } from "@chakra-ui/react";
-import MW2 from "../asset/MW2.jpg";
+
+import Axie from "../asset/Axie-Infinity.jpg";
+import decentraland from "../asset/decentraland.jpg";
+import sandbox from "../asset/sandbox.jpeg";
 
 export default function MainDisplay() {
   return (
-    //가로로 카드를 배치 하기 위햇 Flex를 쓰면 된다. 
-    <Flex > 
+    //가로로 카드를 배치 하기 위햇 Flex를 쓰면 된다.
+    <Flex>
       {DISPLAY_ITEMS.map((DisplayItem) => (
         <Stack
           key={DisplayItem.label}
@@ -33,7 +36,7 @@ export default function MainDisplay() {
               overflow={"hidden"}
             >
               <Box h={"220px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
-                <Image src={MW2} objectFit={"cover"} />
+                <Image src={DisplayItem.image} objectFit={"cover"} />
               </Box>
               <Stack direction={"column"}>
                 <Text
@@ -66,21 +69,24 @@ export default function MainDisplay() {
 const DISPLAY_ITEMS = [
   {
     label: "1",
-    title: "Call of Duty",
+    title: "Axie Infinity",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image:  Axie ,
   },
 
   {
     label: "2",
-    title: "Call of Duty",
+    title: "Decentraland",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image:  decentraland ,
   },
   {
     label: "3",
-    title: "Call of Duty",
+    title: "SandBox",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image:  sandbox ,
   },
 ];
