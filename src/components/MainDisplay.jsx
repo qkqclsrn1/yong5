@@ -5,9 +5,8 @@ import {
   Heading,
   Text,
   Stack,
-  Button,
   Image,
-  Flex,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 import Axie from "../asset/Axie-Infinity.jpg";
@@ -17,7 +16,13 @@ import sandbox from "../asset/sandbox.jpeg";
 export default function MainDisplay() {
   return (
     //가로로 카드를 배치 하기 위햇 Flex를 쓰면 된다.
-    <Flex>
+    <SimpleGrid
+      columns={4}
+      spacing={6}
+      justify={"center"}
+      align={"center"}
+      my={"100px"}
+    >
       {DISPLAY_ITEMS.map((DisplayItem) => (
         <Stack
           key={DisplayItem.label}
@@ -53,16 +58,16 @@ export default function MainDisplay() {
                 </Heading>
                 <Text color={"gray.500"}>{DisplayItem.contents}</Text>
               </Stack>
-              <Stack mt={4} direction={"row"} spacing={4} justify={"center"}>
+              {/* <Stack mt={4} direction={"row"} spacing={4} justify={"center"}>
                 <Button colorScheme="facebook" size="md">
                   Learn More
                 </Button>
-              </Stack>
+              </Stack> */}
             </Box>
           </Center>
         </Stack>
       ))}
-    </Flex>
+    </SimpleGrid>
   );
 }
 
@@ -72,7 +77,7 @@ const DISPLAY_ITEMS = [
     title: "Axie Infinity",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image:  Axie ,
+    image: Axie,
   },
 
   {
@@ -80,13 +85,65 @@ const DISPLAY_ITEMS = [
     title: "Decentraland",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image:  decentraland ,
+    image: decentraland,
   },
   {
     label: "3",
     title: "SandBox",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image:  sandbox ,
+    image: sandbox,
+  },
+
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
+  },
+  {
+    label: "3",
+    title: "SandBox",
+    contents:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
+    image: sandbox,
   },
 ];

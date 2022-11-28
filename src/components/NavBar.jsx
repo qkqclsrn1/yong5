@@ -12,9 +12,13 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Image,
+  Input,
+  InputGroup,
+  IconButton,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Kaikas from "../asset/kaikas.png";
+import {SearchIcon} from "@chakra-ui/icons";
 
 export default function NavBar() {
   return (
@@ -28,6 +32,7 @@ export default function NavBar() {
         borderBottom={1}
         align={"center"}
       >
+        {/* XXX Team Logo*/}
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
@@ -42,6 +47,11 @@ export default function NavBar() {
           <Flex display={{ base: "none", md: "flex" }} ml={20} align={"center"}>
             <DesktopNav />
           </Flex>
+
+
+
+       
+       
         </Flex>
 
         <Stack
@@ -50,6 +60,8 @@ export default function NavBar() {
           direction={"row"}
           spacing={3}
         >
+          {/* XXX SubmitYourgame Button */}
+          
           <Button
             as={"a"}
             width={"210px"}
@@ -83,7 +95,7 @@ export default function NavBar() {
   );
 }
 
-const DesktopNav = ({ currentVisibleIndex, onClickNavLink }) => {
+  const DesktopNav = ({ currentVisibleIndex, onClickNavLink }) => {
   const linkColor = "white";
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = "rgba(94, 92, 93, 0.5)";
@@ -171,20 +183,9 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   );
 };
 
-const NAV_ITEMS = [
-  {
-    label: "Games",
-  },
-  {
-    label: "NFTs",
-    children: [
-      {
-        label: "What you can do with the service",
-        href: "#",
-      },
-    ],
-  },
+/* XXX DesktopItems*/
 
+const NAV_ITEMS = [
   {
     label: "About Us",
     href: "#",

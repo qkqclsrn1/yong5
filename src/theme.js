@@ -12,6 +12,7 @@ const theme = extendTheme({
   },
 
   fonts: {
+    Heading: ` "Aldrich", sans-serif; `,
     body: ` "Aldrich", sans-serif; `,
   },
 });

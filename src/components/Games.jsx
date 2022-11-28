@@ -24,7 +24,7 @@ const Games = () => {
             <Th>Title</Th>
             <Th>Blockchain</Th>
             <Th>Genre</Th>
-            <Th>NFT Volume </Th>
+            <Th>NFT total Volume </Th>
           </Tr>
         </Thead>
         <Tbody>
