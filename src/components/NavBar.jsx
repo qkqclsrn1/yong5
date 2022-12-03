@@ -2,7 +2,7 @@ import {
   Box,
   Flex,
   Text,
-  Button,
+
   Stack,
   Icon,
   Link,
@@ -12,46 +12,45 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Image,
-  Input,
-  InputGroup,
-  IconButton,
+
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Kaikas from "../asset/kaikas.png";
-import {SearchIcon} from "@chakra-ui/icons";
+
 
 export default function NavBar() {
   return (
     <Box pos={"fixed"} top={0} width={"100%"} zIndex={999}>
       <Flex
-        bg={"rgba(0,0,0,0.7)"}
+        bg={"rgba(#272944,0.7)"}
         backdropFilter={"blur(7px)"}
-        minH={"60px"}
+        minH={"80px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         align={"center"}
       >
-        {/* XXX Team Logo*/}
+        {/* <MenuButton
+          as={IconButton}
+          aria-label="Options"
+          icon={<HamburgerIcon />}
+          variant="outline"
+        /> */}
+
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
+            pl={"20px"}
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontWeight={800}
-            fontSize={"33px"}
-            textShadow={"0 0 0.30em #1da9cc"}
-            color={"#afe80c"}
+            fontWeight={600}
+            fontSize={"28px"}
+            // textShadow={"0 0 0.30em #1da9cc"}
+            // color={"#320D6D"}
           >
             0xchips
           </Text>
-
           <Flex display={{ base: "none", md: "flex" }} ml={20} align={"center"}>
             <DesktopNav />
           </Flex>
-
-
-
-       
-       
         </Flex>
 
         <Stack
@@ -60,30 +59,33 @@ export default function NavBar() {
           direction={"row"}
           spacing={3}
         >
-          {/* XXX SubmitYourgame Button */}
-          
-          <Button
-            as={"a"}
-            width={"210px"}
-            height={"32px"}
-            fontSize={"18px"}
-            fontWeight={700}
-            variant={"link"}
-            href={"#"}
-            bg={"#C0C0C0"}
-            color={"black"}
-            justify={"center"}
-            align={"center"}
+          <Box
+            as="button"
+            height="32px"
+            width={"180px"}
+            lineHeight="1.2"
+            transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+            px="8px"
+            borderRadius="20px"
+            fontSize="18px"
+            fontWeight="semibold"
+            bg="gray.700"
+            // color="black"
+            _hover={{ bg: "black" }}
+            _active={{
+              bg: "#0A090C",
+              transform: "scale(0.98)",
+            }}
           >
-            Submit Your Game
-          </Button>
+            List Your Game
+          </Box>
 
           <Box
             as="button"
-            borderRadius="md"
-            bg="white"
+            borderRadius="50%"
+            bg="gray.700"
             px={2}
-            h={"32px"}
+            h={"36px"}
             justify={"center"}
             align={"center"}
           >
@@ -95,7 +97,7 @@ export default function NavBar() {
   );
 }
 
-  const DesktopNav = ({ currentVisibleIndex, onClickNavLink }) => {
+const DesktopNav = ({ currentVisibleIndex, onClickNavLink }) => {
   const linkColor = "white";
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = "rgba(94, 92, 93, 0.5)";
@@ -187,7 +189,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const NAV_ITEMS = [
   {
-    label: "About Us",
-    href: "#",
+    // label: "About Us",
+    // href: "#",
   },
 ];

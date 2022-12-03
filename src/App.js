@@ -8,15 +8,18 @@ import Footer from "./components/Footer";
 import MainDisplay from "./components/MainDisplay";
 import Games from "./components/Games"
 import Header from "./components/Header";
+import SearchResult from "./components/SearchResult";
 
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <NavBar />
-      <Header/>
-      <MainDisplay />
+      {/* <Header/> */}
+      {/* <MainDisplay /> *
+      /}
       {/* <Games /> */}
+      <SearchResult />
       <Footer />
     </ChakraProvider>
   );

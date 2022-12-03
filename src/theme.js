@@ -1,19 +1,21 @@
 import { extendTheme } from "@chakra-ui/react";
-import "@fontsource/aldrich";
+// import "@fontsource/aldrich";
+import "@fontsource/barlow";
+
 
 const theme = extendTheme({
   styles: {
     global: {
       body: {
-        backgroundColor: "#1f1f1f",
+        backgroundColor: "#080705",
         color: "white",
       },
     },
   },
 
   fonts: {
-    Heading: ` "Aldrich", sans-serif; `,
-    body: ` "Aldrich", sans-serif; `,
+    heading: ` "Barlow", sans-serif; `,
+    body: ` "Barlow", sans-serif; `,
   },
 });
 
