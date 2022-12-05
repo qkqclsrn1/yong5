@@ -2,7 +2,6 @@ import {
   Box,
   Flex,
   Text,
-
   Stack,
   Icon,
   Link,
@@ -12,11 +11,12 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Image,
-
+  MenuButton,
 } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import Kaikas from "../asset/kaikas.png";
 
+import { ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
+
+import Kaikas from "../asset/kaikas.png";
 
 export default function NavBar() {
   return (
@@ -30,21 +30,24 @@ export default function NavBar() {
         borderBottom={1}
         align={"center"}
       >
-        {/* <MenuButton
-          as={IconButton}
-          aria-label="Options"
-          icon={<HamburgerIcon />}
-          variant="outline"
-        /> */}
-
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <Box
+            as={"button"}
+            position={"relative"}
+            justify={"center"}
+            align={"center"}
+          
+          >
+            <HamburgerIcon w={10} h={8} />
+          </Box>
+
           <Text
-            pl={"20px"}
+            pl={"10px"}
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontWeight={600}
             fontSize={"28px"}
             // textShadow={"0 0 0.30em #1da9cc"}
-            // color={"#320D6D"}
+            color={"#F7FF58"}
           >
             0xchips
           </Text>
@@ -61,13 +64,13 @@ export default function NavBar() {
         >
           <Box
             as="button"
-            height="32px"
-            width={"180px"}
+            height="44px"
+            width={"220px"}
             lineHeight="1.2"
             transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
             px="8px"
             borderRadius="20px"
-            fontSize="18px"
+            fontSize="24px"
             fontWeight="semibold"
             bg="gray.700"
             // color="black"
@@ -81,15 +84,23 @@ export default function NavBar() {
           </Box>
 
           <Box
-            as="button"
+            display={"block"}
             borderRadius="50%"
             bg="gray.700"
-            px={2}
-            h={"36px"}
+            px={3}
+            h={"44px"}
             justify={"center"}
             align={"center"}
           >
-            <Image boxSize="20px" objectFit="cover" src={Kaikas} href={"#"} />
+            <Image
+              justify={"center"}
+              align={"center"}
+              mt={3}
+              boxSize="23px"
+              objectFit="cover"
+              src={Kaikas}
+              href={"#"}
+            />
           </Box>
         </Stack>
       </Flex>

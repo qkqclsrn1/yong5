@@ -1,27 +1,25 @@
 import React from "react";
-
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "./theme";
-
 import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Games from "./pages/Games";
 import Footer from "./components/Footer";
-import MainDisplay from "./components/MainDisplay";
-import Games from "./components/Games"
-import Header from "./components/Header";
-import SearchResult from "./components/SearchResult";
-
-
+import theme from "./theme";
+import { ChakraProvider } from "@chakra-ui/react";
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <NavBar />
-      {/* <Header/> */}
-      {/* <MainDisplay /> *
-      /}
-      {/* <Games /> */}
-      <SearchResult />
-      <Footer />
-    </ChakraProvider>
+    <Router>
+      <ChakraProvider theme={theme}>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" exact element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/games" element={<Games />} />
+        </Routes>
+        <Footer />
+      </ChakraProvider>
+    </Router>
   );
 }
 
