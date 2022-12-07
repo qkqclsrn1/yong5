@@ -7,6 +7,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 
+//TODO 1: card rearrangement
+//TODO 2: add star-rating system? 
 
 const GameCard = ({games}) => {
   return (

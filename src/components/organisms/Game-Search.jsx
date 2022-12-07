@@ -1,13 +1,16 @@
 //import Image from 'next/image';
 import { SimpleGrid } from "@chakra-ui/react";
-import GameCard from "./GameCard";
-import displayItems from "../mock/data";
+import GameCard from "../molecules/GameCard";
+import displayItems from "../../mock/data";
 import React, { useState } from "react";
 import { Heading, Stack, Input, IconButton, Flex } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 
 import "@fontsource/iceberg";
-import eth from "../asset/eth.png";
+
+
+//TODO: add search keyword with game meta data: chain, genre, etc.
+
 const SearchResult = () => {
   const [searchTerm, setSearchTerm] = useState("");
 

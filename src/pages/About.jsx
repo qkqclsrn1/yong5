@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import TheTeam from "../components/organisms/Team-aboutus";
 
 const About = () => {
-  return (
-    <div>About Us, Oxchips</div>
-  )
-}
+  return <TheTeam />;
+};
 
-export default About
+export default About;

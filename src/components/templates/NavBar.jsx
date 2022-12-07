@@ -14,9 +14,13 @@ import {
 
 } from "@chakra-ui/react";
 
+//TODO 1: kaikas(metamask???) wallet integration
+//TODO 2: List your game:: firebase integration
+//TODO 3: hamburger button-> link  
+
 import { ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
 
-import Kaikas from "../asset/kaikas.png";
+import Kaikas from "../../asset/kaikas.png"
 
 export default function NavBar() {
   return (
