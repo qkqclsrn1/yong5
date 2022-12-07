@@ -11,7 +11,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Image,
-  MenuButton,
+
 } from "@chakra-ui/react";
 
 import { ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
