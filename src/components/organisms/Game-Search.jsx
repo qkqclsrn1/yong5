@@ -8,9 +8,9 @@ import { FaSearch } from "react-icons/fa";
 
 import "@fontsource/iceberg";
 
-
 //TODO: add search keyword with game meta data: chain, genre, etc.
 
+//매우 단순한 검색창. games.title로 filter해서 해당하는 카드를 보여줌.
 const SearchResult = () => {
   const [searchTerm, setSearchTerm] = useState("");
 

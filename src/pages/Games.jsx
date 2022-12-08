@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Game = () => {
+const Games = () => {
   return (
-    <div>Game</div>
+    <div>Games</div>
   )
 }
 
-export default Game
+export default Games

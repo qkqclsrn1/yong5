@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Stack,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Stack, Image } from "@chakra-ui/react";
 
 //TODO 1: card rearrangement
-//TODO 2: add star-rating system? 
+//TODO 2: add star-rating system?
 
-const GameCard = ({games}) => {
+//games를 prop으로 내려주고, 카드 형태를 생성. 이 카드를 Game-Search에서 씁니다.  
+const GameCard = ({ games }) => {
   return (
     <Stack
       key={games.label}
@@ -26,14 +21,7 @@ const GameCard = ({games}) => {
         p={3}
         overflow={"hidden"}
       >
-        {/* <Box h={"240px"} mb={5} pos={"relative"}> */}
-        <Image
-          src={games.image}
-          objectFit={"fill"}
-          h={"240px"}
-          w={"460px"}
-        />
-        {/* </Box> */}
+        <Image src={games.image} objectFit={"fill"} h={"240px"} w={"460px"} />
 
         <Stack direction={"column"} mt={5}>
           <Text
@@ -48,9 +36,6 @@ const GameCard = ({games}) => {
           <Heading color={"white"} fontSize={"3xl"}>
             {games.title}
           </Heading>
-          {/* <Box bg={"rgba(124, 124, 124, 0.5)"} rounded={"xl"}>
-                <Image src={eth} h={"30px"} w={"20px"} />
-              </Box> */}
 
           <Box py={3} textAlign={"left"} px={4}>
             <Text color={"#C7E8F3"}>{games.contents}</Text>
