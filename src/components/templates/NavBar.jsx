@@ -11,16 +11,16 @@ import {
   useColorModeValue,
   useBreakpointValue,
   Image,
-
 } from "@chakra-ui/react";
 
 //TODO 1: kaikas(metamask???) wallet integration
 //TODO 2: List your game:: firebase integration
-//TODO 3: hamburger button-> link  
+//TODO 3: hamburger button-> link
+//TODO 4: MyPage Button :: (avatar button??)
 
 import { ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
 
-import Kaikas from "../../asset/kaikas.png"
+import Kaikas from "../../asset/kaikas.png";
 
 export default function NavBar() {
   return (
@@ -40,7 +40,6 @@ export default function NavBar() {
             position={"relative"}
             justify={"center"}
             align={"center"}
-          
           >
             <HamburgerIcon w={10} h={8} />
           </Box>
@@ -55,9 +54,11 @@ export default function NavBar() {
           >
             0xchips
           </Text>
-          <Flex display={{ base: "none", md: "flex" }} ml={20} align={"center"}>
-            <DesktopNav />
-          </Flex>
+          <Flex
+            display={{ base: "none", md: "flex" }}
+            ml={20}
+            align={"center"}
+          ></Flex>
         </Flex>
 
         <Stack
@@ -106,99 +107,20 @@ export default function NavBar() {
               href={"#"}
             />
           </Box>
+          <Box
+            display={"block"}
+            borderRadius="50%"
+            bg="gray.700"
+            px={5}
+            h={"44px"}
+            justify={"center"}
+            align={"center"}
+          ></Box>
         </Stack>
       </Flex>
     </Box>
   );
 }
-
-const DesktopNav = ({ currentVisibleIndex, onClickNavLink }) => {
-  const linkColor = "white";
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = "rgba(94, 92, 93, 0.5)";
-
-  return (
-    <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem, index) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                onClick={() => onClickNavLink(index)}
-                fontSize={"lg"}
-                fontWeight={500}
-                color={
-                  currentVisibleIndex === index ? "#afe80c" : { linkColor }
-                }
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={"xl"}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={"xl"}
-                minW={"sm"}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-    </Stack>
-  );
-};
-
-const DesktopSubNav = ({ label, href, subLabel }) => {
-  return (
-    <Link
-      href={href}
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: "4f4f50" }}
-    >
-      <Stack direction={"row"} align={"center"}>
-        <Box>
-          <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: "#FFF01F" }}
-            fontWeight={500}
-          >
-            {label}
-          </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={"all .3s ease"}
-          transform={"translateX(-10px)"}
-          opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
-          flex={1}
-        >
-          <Icon color={"#FFF158"} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
-  );
-};
 
 /* XXX DesktopItems*/
 
