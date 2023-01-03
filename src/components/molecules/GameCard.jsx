@@ -4,7 +4,7 @@ import { Box, Heading, Text, Stack, Image } from "@chakra-ui/react";
 //TODO 1: card rearrangement
 //TODO 2: add star-rating system?
 
-//games를 prop으로 내려주고, 카드 형태를 생성. 이 카드를 Game-Search에서 씁니다.  
+//games를 prop으로 내려주고, 카드 형태를 생성. 이 카드를 Game-Search에서 씁니다.
 const GameCard = ({ games }) => {
   return (
     <Stack
@@ -19,8 +19,7 @@ const GameCard = ({ games }) => {
         boxShadow={"3xl"}
         rounded={"lg"}
         p={3}
-        overflow={"hidden"}
-      >
+        overflow={"hidden"}>
         <Image src={games.image} objectFit={"fill"} h={"240px"} w={"460px"} />
 
         <Stack direction={"column"} mt={5}>
@@ -29,8 +28,7 @@ const GameCard = ({ games }) => {
             textTransform={"uppercase"}
             fontWeight={300}
             fontSize={"sm"}
-            letterSpacing={1.1}
-          >
+            letterSpacing={1.1}>
             {games.tagline}
           </Text>
           <Heading color={"white"} fontSize={"3xl"}>

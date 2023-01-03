@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { ethers } from "ethers";
 import {
   Box,
@@ -6,49 +7,47 @@ import {
   Text,
   Stack,
   useBreakpointValue,
+  Link,
 } from "@chakra-ui/react";
 
-
-//TODO 1: kaikas(metamask???) wallet integration
 //TODO 2: List your game:: firebase integration
 //TODO 3: hamburger button-> link
 //TODO 4: MyPage Button :: (avatar button??)
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 
+
 export default function NavBar() {
+  const [account, setAccount] = useState(null);
+  const [buttonText, setButtonText] = useState("Connect Your Wallet");
+  const [buttonColor, setButtonColor] = useState("#Be2525");
+  // const [walletAddress, SetWalletAddress] = useState("")
 
-    const [account, setAccount] = useState(null);
-    const [buttonText, setButtonText] = useState("Connect Your Wallet");
-    const [buttonColor, setButtonColor] = useState("#Be2525");
-    // const [walletAddress, SetWalletAddress] = useState("")
-  
 
-    const connectWalletHandler = () => {
-      if (window.ethereum && window.ethereum.isMetaMask) {
-        window.ethereum
-          .request({ method: "eth_requestAccounts" })
-          .then((result) => {
-            accountChangeHandler(result[0]);
-            setButtonText("Wallet connected");
-            setButtonColor("#24E500")
-          });
-      } else {
-        alert("Please install MetaMask");
-      }
+  const connectWalletHandler = () => {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((result) => {
+          // accountChangeHandler(result[0]);
+          setButtonText("Wallet connected");
+          setButtonColor("#24E500");
+        });
+    } else {
+      alert("Please install MetaMask");
+    }
 
-      const accountChangeHandler = (newAccount) => {
-        setAccount(newAccount);
-      };
-      const chainChangeHandler = (chainId) => {
-        window.location.reload();
-      };
+    // const accountChangeHandler = (newAccount) => {
+    //   setAccount(newAccount);
 
-      window.ethereum.on("accountsChanged", accountChangeHandler);
-      window.ethereum.on("chainChanged", chainChangeHandler);
-      
+    // };
+    // const chainChangeHandler = (chainId) => {
+    //   window.location.reload();
+    // };
 
-    };
+    // window.ethereum.on("accountsChanged", accountChangeHandler);
+    // window.ethereum.on("chainChanged", chainChangeHandler);
+  };
   return (
     <Box pos={"fixed"} top={0} width={"100%"} zIndex={999}>
       <Flex
@@ -60,23 +59,33 @@ export default function NavBar() {
         borderBottom={1}
         align={"center"}>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <Link href="/about">
+            <Box
+              as={"button"}
+              position={"relative"}
+              justify={"center"}
+              align={"center"}>
+              <HamburgerIcon w={10} h={8} />
+            </Box>
+          </Link>
+
           <Box
             as={"button"}
             position={"relative"}
             justify={"center"}
             align={"center"}>
-            <HamburgerIcon w={10} h={8} />
+            <Link href="/">
+              <Text
+                pl={"10px"}
+                textAlign={useBreakpointValue({ base: "center", md: "left" })}
+                fontWeight={600}
+                fontSize={"28px"}
+                // textShadow={"0 0 0.30em #1da9cc"}
+                color={"#F7FF58"}>
+                0xchips
+              </Text>
+            </Link>
           </Box>
-
-          <Text
-            pl={"10px"}
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontWeight={600}
-            fontSize={"28px"}
-            // textShadow={"0 0 0.30em #1da9cc"}
-            color={"#F7FF58"}>
-            0xchips
-          </Text>
           <Flex
             display={{ base: "none", md: "flex" }}
             ml={20}
@@ -126,7 +135,6 @@ export default function NavBar() {
             onClick={connectWalletHandler}>
             {buttonText}
           </Box>
-          )}
         </Stack>
       </Flex>
     </Box>
