@@ -1,10 +1,10 @@
 import React from "react";
-import SearchResult from "../components/organisms/Game-Search";
+import GameSearch from "../components/organisms/Game-Search";
 
 function Home() {
   return (
     <>
-      <SearchResult />
+      <GameSearch/>
     </>
   );
 }

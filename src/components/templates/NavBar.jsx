@@ -11,18 +11,16 @@ import {
 } from "@chakra-ui/react";
 
 //TODO 2: List your game:: firebase integration
-//TODO 3: hamburger button-> link
+
 //TODO 4: MyPage Button :: (avatar button??)
 
 import { HamburgerIcon } from "@chakra-ui/icons";
-
 
 export default function NavBar() {
   const [account, setAccount] = useState(null);
   const [buttonText, setButtonText] = useState("Connect Your Wallet");
   const [buttonColor, setButtonColor] = useState("#Be2525");
   // const [walletAddress, SetWalletAddress] = useState("")
-
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
@@ -55,29 +53,28 @@ export default function NavBar() {
         backdropFilter={"blur(7px)"}
         minH={"80px"}
         py={{ base: 2 }}
-        px={{ base: 4 }}
+        px={{ base: 7 }}
         borderBottom={1}
         align={"center"}>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        <Stack
+          flex={{ base: 1 }}
+          justify={"flex-start"}
+          direction={"row"}
+          spacing={3}>
           <Link href="/about">
             <Box
               as={"button"}
               position={"relative"}
               justify={"center"}
-              align={"center"}>
-              <HamburgerIcon w={10} h={8} />
+              align={"start"}>
+              <HamburgerIcon w={16} h={10} />
             </Box>
           </Link>
 
-          <Box
-            as={"button"}
-            position={"relative"}
-            justify={"center"}
-            align={"center"}>
+          <Box as={"button"} justify={"center"} align={"center"} >
             <Link href="/">
               <Text
-                pl={"10px"}
-                textAlign={useBreakpointValue({ base: "center", md: "left" })}
+                mt={-2}
                 fontWeight={600}
                 fontSize={"28px"}
                 // textShadow={"0 0 0.30em #1da9cc"}
@@ -86,11 +83,7 @@ export default function NavBar() {
               </Text>
             </Link>
           </Box>
-          <Flex
-            display={{ base: "none", md: "flex" }}
-            ml={20}
-            align={"center"}></Flex>
-        </Flex>
+        </Stack>
 
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -100,10 +93,8 @@ export default function NavBar() {
           <Box
             as="button"
             height="44px"
-            width={"200px"}
-            lineHeight="1.2"
+            width="200px"
             transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
-            px="8px"
             borderRadius="20px"
             fontSize="20px"
             fontWeight="semibold"
@@ -119,15 +110,14 @@ export default function NavBar() {
           <Box
             as="button"
             height="44px"
-            width={"240px"}
-            lineHeight="1.2"
+            width="240px"
             transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
             px="8px"
             borderRadius="20px"
             fontSize="20px"
             fontWeight="semibold"
             bg={buttonColor}
-            _hover={{ bg: "white" }}
+            _hover={{ bg: "black" }}
             _active={{
               bg: { buttonColor },
               transform: "scale(0.98)",

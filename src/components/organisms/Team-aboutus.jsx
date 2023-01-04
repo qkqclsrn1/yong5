@@ -10,7 +10,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import theteam from "../../asset/theteam.jpg";
+import theTeam from "../../asset/theteam.jpg";
 
 export default function TheTeam() {
   return (
@@ -36,8 +36,8 @@ export default function TheTeam() {
                   the Team
                 </Text>
                 <Heading color={"white"} mb={5} fontSize={{ base: "4xl" }}>
-                  Our mission is to provide the reliable information on games
-                  and NFTs for the gamers
+                  Our mission is to provide the reliable information on web3 games
+                  and NFTs for the users
                 </Heading>
                 <Text fontSize={"xl"} color={"gray.400"}>
                   The Oxchips team allows you to find your games and NFTs and
@@ -67,13 +67,13 @@ export default function TheTeam() {
           </Stack>
         </Container>
       </Box>
-      <Image src={theteam} objectFit={"fill"} maxW={"4xl"} />
-      />
+      <Image src={theTeam} objectFit={"fill"} maxW={"5xl"}/>
+      
     </Flex>
   );
 }
 
-const StatsText = ({ children }: { children: ReactNode }) => (
+const StatsText = ({ children }) => (
   <Text as={"span"} fontWeight={700} color={"white"}>
     {children}
   </Text>

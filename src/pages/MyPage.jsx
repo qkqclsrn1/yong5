@@ -1,77 +1,68 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { Mark, Box, Heading, useHighlight, Flex } from "@chakra-ui/react";
 import { ethers } from "ethers";
 
 const MyPage = () => {
-  
-	const [errorMessage, setErrorMessage] = useState(null);
-	const [defaultAccount, setDefaultAccount] = useState(null);
-	const [userBalance, setUserBalance] = useState(null);
 
-	const connectWallet= () => {
-		if (window.ethereum && window.ethereum.isMetaMask) {
-			console.log('MetaMask Here!');
 
-			window.ethereum.request({ method: 'eth_requestAccounts'})
-			.then(result => {
-				accountChangedHandler(result[0]);
-				getAccountBalance(result[0]);
-			})
-			.catch(error => {
-				setErrorMessage(error.message);
-			
-			});
+  const [account, setAccount] = useState()
+  const [balance, setBalance] = useState()
 
-		} else {
-			console.log('Need to install MetaMask');
-			setErrorMessage('Please install MetaMask browser extension to interact');
-		}
-	}
+  const connect = async () => {
+    if (window.ethereum) {
+      try {
+        const res = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        })
+        console.log(res)
+        setAccount(res[0])
+        const balance1 = await window.ethereum.request({
+          method: 'eth_getBalance',
+          params: [res[0].toString(), 'latest'],
+        })
 
-	// update account, will cause component re-render
-	const accountChangedHandler = (newAccount) => {
-		setDefaultAccount(newAccount);
-		getAccountBalance(newAccount.toString());
-	}
+        setBalance(ethers.utils.formatEther(balance1))
+      } catch (err) {
+        console.error(err)
+      } 
+    } else {
+      console.log('Install Metamask')
+    }
+  }
 
-	const getAccountBalance = (account) => {
-		window.ethereum.request({method: 'eth_getBalance', params: [account, 'latest']})
-		.then(balance => {
-			setUserBalance(ethers.utils.formatEther(balance));
-		})
-		.catch(error => {
-			setErrorMessage(error.message);
-		});
-	};
 
-	const chainChangedHandler = () => {
-		// reload the page to avoid any errors with chain change mid use of application
-		window.location.reload();
-	}
-
- const chunks = useHighlight({
+  connect();
+  const chunks = useHighlight({
     text:
-      "Hello there, Thank you so much for using 0xchips gaming NFT marketplace. Your precious connected wallet address is" +
+      `Hello, there. Thank you for using 0xchips gaming NFT marketplace. 
+      Your connected wallet address is` +
       "  " +
-      `${defaultAccount}` +
+      `${account}` +
       " " +
-      "and balance is" +
-      `${ userBalance }`,
-    query: ["account", "connected", "accentuate", "instantly"],
+      "the balance is" + " " +
+      `${balance}` + "  " + "ether.",
+    query: ["connected wallet address", "the balance", `${account}`, `${balance}`],
   });
-  
-  return (
 
-  <Flex display={"flex"} justify={"center"} align={"center"} my={200} mx={200}>
-      <Heading lineHeight="tall">
+  return (
+    <Flex   
+      w={650}
+      h={350}
+   
+      display={"raw"}
+      justify={"center"}
+      align={"center"}
+      my={200}
+      mx={300}>
+      <Heading lineHeight="50px" >
         {chunks.map(({ match, text }) => {
           if (!match) return text;
-          return text === "instantly" ? (
-            <Box as="u" fontFamily="NewYork">
+          return (text === "connected wallet address" || text === "the balance") ? (
+            <Box as="u">
               {text}
             </Box>
           ) : (
-            <Mark bg="white" color="black" fontFamily="NewYork" px="2" py="1">
+            <Mark bg="white" color="black" px="3" py="1">
               {text}
             </Mark>
           );
@@ -81,5 +72,4 @@ const MyPage = () => {
   );
 };
 
-
-export default MyPage
+export default MyPage;

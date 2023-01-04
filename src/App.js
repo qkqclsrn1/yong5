@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Games from "./pages/Games";
 import NFTs from "./pages/NFTs";
-// import MyPage from "./pages/MyPage"
+import MyPage from "./pages/MyPage"
 import Footer from "./components/templates/Footer";
 import theme from "./theme";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -19,7 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/games" element={<Games />} />
           <Route path="/nfts" element={<NFTs />} />
-          {/* <Route path="/myPage" element={<MyPage/>}/> */}
+          <Route path="/myPage" element={<MyPage/>} />
         </Routes>
         <Footer />
       </ChakraProvider>
