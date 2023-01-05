@@ -1,51 +1,142 @@
 import React, { useState, useEffect } from "react";
-
+// import  useMetaMask from "../../useMetamask.js";
+// import { useWeb3React } from "@web3-react/core";
+//import { ethers } from "ethers";
+import { Box, Flex, Text, Stack, Link } from "@chakra-ui/react";
 import { ethers } from "ethers";
-import {
-  Box,
-  Flex,
-  Text,
-  Stack,
-  useBreakpointValue,
-  Link,
-} from "@chakra-ui/react";
-
-//TODO 2: List your game:: firebase integration
-
-//TODO 4: MyPage Button :: (avatar button??)
-
 import { HamburgerIcon } from "@chakra-ui/icons";
-
+// import { injected } from "../../utils/injected";
+// import Web3 from "web3";
 export default function NavBar() {
+  const [errorMessage, setErrorMessage] = useState(null);
   const [account, setAccount] = useState(null);
-  const [buttonText, setButtonText] = useState("Connect Your Wallet");
-  const [buttonColor, setButtonColor] = useState("#Be2525");
-  // const [walletAddress, SetWalletAddress] = useState("")
+  const [balance, setBalance] = useState(null);
 
-  const connectWalletHandler = () => {
+  useEffect(() => {
     if (window.ethereum) {
-      window.ethereum
-        .request({ method: "eth_requestAccounts" })
-        .then((result) => {
-          // accountChangeHandler(result[0]);
-          setButtonText("Wallet connected");
-          setButtonColor("#24E500");
-        });
-    } else {
-      alert("Please install MetaMask");
+      window.ethereum.on("accountsChanged", accountsChanged);
+      window.ethereum.on("chainChanged", chainChanged);
     }
+  }, []);
 
-    // const accountChangeHandler = (newAccount) => {
-    //   setAccount(newAccount);
+  const connectHandler = async () => {
+    if (window.ethereum) {
+      try {
+        const res = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
 
-    // };
-    // const chainChangeHandler = (chainId) => {
-    //   window.location.reload();
-    // };
-
-    // window.ethereum.on("accountsChanged", accountChangeHandler);
-    // window.ethereum.on("chainChanged", chainChangeHandler);
+        await accountsChanged(res[0]);
+      } catch (err) {
+        console.error(err);
+        setErrorMessage("There was a problem connecting to MetaMask");
+      }
+    } else {
+      setErrorMessage("Install MetaMask");
+    }
   };
+
+  const accountsChanged = async (newAccount) => {
+    setAccount(newAccount);
+    try {
+      const balance = await window.ethereum.request({
+        method: "eth_getBalance",
+        params: [newAccount.toString(), "latest"],
+      });
+      setBalance(ethers.utils.formatEther(balance));
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("There was a problem connecting to MetaMask");
+    }
+  };
+
+  const chainChanged = () => {
+    setErrorMessage(null);
+    setAccount(null);
+    setBalance(null);
+  };
+  // const [loading, setLoading] = useState(false);
+  // const { active, account, library, chainId, activate, deactivate } =
+  //   useWeb3React();
+  // // const [account, setAccount] = useState(null);
+  // // const [buttonText, setButtonText] = useState("Connect Your Wallet");
+  // // const [buttonColor, setButtonColor] = useState("#Be2525");
+  // // // const [walletAddress, SetWalletAddress] = useState("")
+  // let acc = localStorage.getItem("account");
+  // let web3;
+
+  // // function connectWallet() {
+  // //   activate(injected) }
+  // //   useEffect(() => {
+  // //     console.log(chainId, account, activate)
+  // //   })
+
+  // const connectWalletHandler = () => {
+  //   if (window.ethereum && window.ethereum.isMetaMask) {
+  //     console.log("MetaMask Here!");
+  //     web3 = new Web3(window.ethereum);
+  //     window.ethereum.request({ method: "eth_requestAccounts" });
+  //   } else {
+  //     alert("Please install MetaMask");
+  //   }
+  // };
+  // async function connectOnLoad() {
+  //   try {
+  //     await activate(injected);
+  //     console.log(chainId, account, activate);
+  //   } catch (ex) {
+  //     console.log(ex);
+  //   }
+
+  //   const account1 = await web3.eth.getAccounts();
+  //   acc = localStorage.setItem("accounts", account1);
+  // }
+
+  // useEffect(() => {
+  //   if (acc != null) {
+  //     connectOnLoad();
+  //   }
+  //   connectWalletHandler();
+  // }, []);
+
+  // async function connectOnClick() {
+  //   if (localStorage.getItem("accounts") == null) {
+  //     setLoading(true);
+  //     try {
+  //       await activate(injected);
+  //     } catch (ex) {
+  //       console.log(ex);
+  //     }
+  //     const account1 = await web3.eth.getAccounts();
+  //     console.log(account1);
+  //     acc = localStorage.setItem("account", account1);
+  //     console.log(acc);
+  //     setTimeout(function () {
+  //       setLoading(false);
+  //     }, 1600);
+  //   } else {
+  //     disconnect();
+  //   }
+  // }
+
+  // async function disconnect() {
+  //   try {
+  //     deactivate();
+  //     localStorage.removeItem("account");
+  //   } catch (ex) {
+  //     console.log(ex);
+  //   }
+  // }
+  // // const accountChangeHandler = (newAccount) => {
+  // //   setAccount(newAccount);
+
+  // // };
+  // // const chainChangeHandler = (chainId) => {
+  // //   window.location.reload();
+  // // };
+
+  // // window.ethereum.on("accountsChanged", accountChangeHandler);
+  // // window.ethereum.on("chainChanged", chainChangeHandler);
   return (
     <Box pos={"fixed"} top={0} width={"100%"} zIndex={999}>
       <Flex
@@ -71,7 +162,7 @@ export default function NavBar() {
             </Box>
           </Link>
 
-          <Box as={"button"} justify={"center"} align={"center"} >
+          <Box as={"button"} justify={"center"} align={"center"}>
             <Link href="/">
               <Text
                 mt={-2}
@@ -116,26 +207,17 @@ export default function NavBar() {
             borderRadius="20px"
             fontSize="20px"
             fontWeight="semibold"
-            bg={buttonColor}
+            bg={account ? "#24E500" : "#Be2525"}
             _hover={{ bg: "black" }}
             _active={{
-              bg: { buttonColor },
+              bg: "#0A090C",
               transform: "scale(0.98)",
             }}
-            onClick={connectWalletHandler}>
-            {buttonText}
+            onClick={connectHandler}>
+            {account ? "Connected" : "Connect your Wallet"}
           </Box>
         </Stack>
       </Flex>
     </Box>
   );
 }
-
-/* XXX DesktopItems*/
-
-const NAV_ITEMS = [
-  {
-    label: "About Us",
-    href: "#",
-  },
-];

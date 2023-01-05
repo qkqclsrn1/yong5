@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { injected } from '../components/wallet/connectors'
+import { injected } from './utils/injected.js'
 import { useWeb3React } from '@web3-react/core';
 
 export const MetaMaskContext = React.createContext(null)
 
 export const MetaMaskProvider = ({ children }) => {
 
-    const { activate, account, library, connector, active, deactivate } = useWeb3React()
+    const { activate, account, library, connector, chainId, active, deactivate } = useWeb3React()
 
     const [isActive, setIsActive] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -47,7 +47,7 @@ export const MetaMaskProvider = ({ children }) => {
         }
     }
 
-    const values = useMemo(
+    const values = useMemo( // 자주 사용하는 값을 caching 한다. 
         () => ({
             isActive,
             account,
@@ -55,7 +55,7 @@ export const MetaMaskProvider = ({ children }) => {
             connect,
             disconnect
         }),
-        [isActive, isLoading]
+        //[isActive, isLoading]
     )
 
     return <MetaMaskContext.Provider value={values}>{children}</MetaMaskContext.Provider>

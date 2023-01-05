@@ -3,12 +3,13 @@ import NavBar from "./components/templates/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Games from "./pages/Games";
+import OtherdeedForOtherside from "./pages/OtherdeedForOtherside";
 import NFTs from "./pages/NFTs";
-import MyPage from "./pages/MyPage"
+//import MyPage from "./pages/MyPage"
 import Footer from "./components/templates/Footer";
 import theme from "./theme";
 import { ChakraProvider } from "@chakra-ui/react";
+
 function App() {
   return (
     <Router>
@@ -17,9 +18,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/games" element={<Games />} />
           <Route path="/nfts" element={<NFTs />} />
-          <Route path="/myPage" element={<MyPage/>} />
+          <Route path="/OdForOs" element={<OtherdeedForOtherside />}/>
+          {/* <Route path="/myPage" element={<MyPage/>} /> */}
         </Routes>
         <Footer />
       </ChakraProvider>

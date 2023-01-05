@@ -2,7 +2,7 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "../molecules/GameCard";
 import displayItems from "../../mock/data";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Heading, Stack, Input, IconButton, Flex } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 
@@ -13,7 +13,9 @@ import "@fontsource/iceberg";
 //매우 단순한 검색창. games.title로 filter해서 해당하는 카드를 보여줌.
 const SearchResult = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
+  // useEffect(() => {
+  //   setSearchTerm()
+  // })
   return (
     <>
       <Stack h={"300px"} justify={"center"} align={"center"} my={10} pt={10}>
