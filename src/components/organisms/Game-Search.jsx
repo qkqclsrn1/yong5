@@ -54,7 +54,7 @@ const SearchResult = () => {
       </Stack>
 
       <SimpleGrid
-        columns={5}
+        columns={3}
         spacing={4}
         justify={"center"}
         align={"center"}

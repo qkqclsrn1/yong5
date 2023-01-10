@@ -15,9 +15,10 @@ const GameCard = ({ games }) => {
     >
       <Box
         as={"button"}
-        w={"460px"}
+        w={"450px"}
+        h={"600px"}
         bg={"black"}
-        boxShadow={"3xl"}
+        boxShadow={"0 0 0.60em #52137D"}
         rounded={"lg"}
         p={3}
         overflow={"hidden"}

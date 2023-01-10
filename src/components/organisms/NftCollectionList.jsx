@@ -56,6 +56,7 @@ const NftCollectionList = () => {
         justify={"center"}
         align={"center"}
         my={"60px"}
+        mx={100}
       >
         {myNFTs
           .filter((games) => {
