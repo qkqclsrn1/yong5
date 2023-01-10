@@ -7,9 +7,9 @@ import { Box, Heading, Text, Stack, Image, Button,Modal,
   ModalBody,
   ModalCloseButton,useDisclosure,Input } from "@chakra-ui/react";
 
-import Modals from "./MyCollectionModal";
+import Modals from "./NftCollectionModal";
 
-const MyNFT = ({ games }) => {
+const NftCollection = ({ games }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Stack key={games.label} mt={"40px"} direction={"row"} px={"40px"}>
@@ -37,7 +37,7 @@ const MyNFT = ({ games }) => {
             {games.tagline}
           </Text>
           <Heading color={"rgba(234, 234, 234, 0.5)"} fontSize={"20"}>
-            판매가 없음
+            구매가 없음
           </Heading>
           {/* <Box bg={"rgba(227, 221, 221, 0.5)"} rounded={"xl"}>
                 <Image src={eth} h={"30px"} w={"20px"} />
@@ -55,7 +55,7 @@ const MyNFT = ({ games }) => {
           mb={5}
           onClick={onOpen}
         >
-          판매하기
+          구매하기
         </Button>
       </Box>
       <Modals games={games} isOpen={isOpen} onClose={onClose} onOpen={onOpen}/>
@@ -63,4 +63,4 @@ const MyNFT = ({ games }) => {
   );
 };
 
-export default MyNFT;
+export default NftCollection;

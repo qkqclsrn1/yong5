@@ -1,14 +1,23 @@
-import { Text, Flex, Box, VStack, Tabs, TabList, Tab, Image, Icon } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Box,
+  Tabs,
+  TabList,
+  Tab,
+  Image,
+  Icon,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { StarIcon } from "@chakra-ui/icons";
 import { HiOutlineStar } from "react-icons/hi";
+import displayItems from "../../mock/data";
 
 
-
-export default function GameTabs({imgsrc, name}) {
+export default function GameTabs({ imgsrc, name, link }) {
+  console.log({ link }[0]);
   return (
     <>
-      <Flex mx={300}>
+      <Flex mx={300} mt={300}>
         <Box border="4px" borderColor="white" w="180px" h="180px" mr={20}>
           <Image src={imgsrc} w="100%" h="100%"></Image>
         </Box>
@@ -27,31 +36,29 @@ export default function GameTabs({imgsrc, name}) {
       <Flex mx={300} mt={40}>
         <Tabs h={100} variant="soft-rounded" colorScheme="green">
           <TabList mb="3em">
-            <Link to-="/">
-              <Tab
-                h="60px"
-                fontSize="30px"
-                _selected={{ color: "black", bg: "#F7FF58" }}
-              >
-                ABOUT THIS GAME
-              </Tab>
-            </Link>
             <Tab
               h="60px"
               fontSize="30px"
               _selected={{ color: "black", bg: "#F7FF58" }}
             >
-              NFT
+              <Link to={link}>ABOUT THIS GAME</Link>
             </Tab>
-            <Link to-="/forum">
-              <Tab
-                h="60px"
-                fontSize="30px"
-                _selected={{ color: "black", bg: "#F7FF58" }}
-              >
-                FORUM
-              </Tab>
-            </Link>
+
+            <Tab
+              h="60px"
+              fontSize="30px"
+              _selected={{ color: "black", bg: "#F7FF58" }}
+            >
+              <Link to={link+"/gamenft"}>Listed NFTs</Link>
+            </Tab>
+
+            <Tab
+              h="60px"
+              fontSize="30px"
+              _selected={{ color: "black", bg: "#F7FF58" }}
+            >
+              <Link to={link +"/forum"}>COMMUNITY</Link>
+            </Tab>
           </TabList>
         </Tabs>
       </Flex>

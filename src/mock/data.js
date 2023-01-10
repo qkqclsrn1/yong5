@@ -1,75 +1,58 @@
-import Axie from "../asset/Axie-Infinity.jpg";
-import decentraland from "../asset/decentraland.jpg";
-import sandbox from "../asset/sandbox.jpeg";
-import Otherdeed from "../asset/Otherdeed_for_Otherside_about_1.png";
+import ApostlesGenesisMain from "../asset/ApostlesGenesis/ApostlesGenesis_main.png";
+import BYOLandMain from "../asset/BYOLand/BYOLand_main.png";
+import TheSandboxMain from "../asset/TheSandbox/TheSandbox_main.jpeg";
+import WarRidersMain from "../asset/WarRiders/WarRiders_main.png";
+import OtherdeedForOthersideMain from "../asset/OtherdeedForOtherside/Otherdeed_for_Otherside_main.png";
 
 const displayItems = [
   {
     label: "1",
-    title: "Axie Infinity",
+    title: "Apostles: Genesis",
     tagline: "#the largest game in the world",
+    link: "/Apostles",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-    image: Axie,
+    image: ApostlesGenesisMain,
   },
 
   {
     label: "2",
-    title: "Decentraland",
+    title: "War Riders",
     tagline: "#the largest real estate assets",
+    link: "/warriders",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: decentraland,
+    image: WarRidersMain,
   },
+
   {
     label: "3",
     tagline: "#the largest game in the world",
     title: "Otherdeed for Otherside",
+    link: "/OdForOs",
     contents:
-      "We set out to build the Otherside with one thing in mind: the metaverse should be anything but boring. The world should be dynamic, steeped in narrative, and your actions should hold consequence.", 
-    image: Otherdeed,
+      "We set out to build the Otherside with one thing in mind: the metaverse should be anything but boring. The world should be dynamic, steeped in narrative, and your actions should hold consequence.",
+    image: OtherdeedForOthersideMain,
   },
 
   {
-    label: "3",
+    label: "4",
     tagline: "#the largest game in the world",
-    title: "SandBox",
+    title: "The SandBox",
+    link: "/sandbox",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: sandbox,
+    image: TheSandboxMain,
   },
 
   {
-    label: "3",
+    label: "5",
     tagline: "#the largest game in the world",
-    title: "SandBox",
+    title: "BYOLand",
+    link: "/BYOLand",
     contents:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: sandbox,
-  },
-  {
-    label: "3",
-    tagline: "#the largest game in the world",
-    title: "SandBox",
-    contents:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: sandbox,
-  },
-  {
-    label: "3",
-    tagline: "#the largest game in the world",
-    title: "SandBox",
-    contents:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: sandbox,
-  },
-  {
-    label: "3",
-    tagline: "#the largest game in the world",
-    title: "SandBox",
-    contents:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore ma aliquyam erat, sed diam voluptua. At vero eos et accusam justo duo dolores et ea rebum.Lorem ipsum dolor sit amet, conse",
-    image: sandbox,
+    image: BYOLandMain,
   },
 ];
 

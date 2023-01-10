@@ -1,22 +1,20 @@
 import React from "react";
 
-import { Outlet, Link } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
 
 import Tabs from "../components/templates/Tabs";
-import Introduction from "../components/organisms/Introduction";
 
-import OtherdeedForOthersideIcon from "../asset/Otherdeed_for_Otherside_Icon.png";
-
+import OtherdeedForOthersideIcon from "../asset/OtherdeedForOtherside/Otherdeed_for_Otherside_Icon.png";
 
 function OtherdeedForOtherside() {
   return (
     <>
-   
-
-      <Tabs imgsrc={OtherdeedForOthersideIcon} name="Otherdeed for Otherside"/>
-      <Introduction />
-
+      <Tabs
+        imgsrc={OtherdeedForOthersideIcon}
+        name="Otherdeed for Otherside"
+        link="/OdForOs"
+      />
+      <Outlet />
     </>
   );
 }

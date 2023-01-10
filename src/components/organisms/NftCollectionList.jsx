@@ -2,22 +2,19 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "../molecules/GameCard";
 import displayItems from "../../mock/data";
-import React, { useState, useEffect } from "react";
+import NftCollection from "./NftCollection";
+import myNFTs from "../../mock/nftData";
+import React, { useState } from "react";
 import { Heading, Stack, Input, IconButton, Flex } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 
 import "@fontsource/iceberg";
-
-//TODO: add search keyword with game meta data: chain, genre, etc.
-
-//매우 단순한 검색창. games.title로 filter해서 해당하는 카드를 보여줌.
-const SearchResult = () => {
+const NftCollectionList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // useEffect(() => {
-  //   setSearchTerm()
-  // })
+
   return (
     <>
+      {/*
       <Stack h={"300px"} justify={"center"} align={"center"} my={10} pt={10}>
         <Heading
           as="h1"
@@ -52,15 +49,15 @@ const SearchResult = () => {
           />
         </Flex>
       </Stack>
-
+  */}
       <SimpleGrid
-        columns={5}
+        columns={6}
         spacing={4}
         justify={"center"}
         align={"center"}
         my={"60px"}
       >
-        {displayItems
+        {myNFTs
           .filter((games) => {
             if (searchTerm == "") {
               return games;
@@ -71,11 +68,11 @@ const SearchResult = () => {
             }
           })
           .map((games) => (
-            <GameCard games={games} />
+            <NftCollection games={games} />
           ))}
       </SimpleGrid>
     </>
   );
 };
 
-export default SearchResult;
+export default NftCollectionList;

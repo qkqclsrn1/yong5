@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Stack,
-  Image,
-  Link,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Stack, Image, Link } from "@chakra-ui/react";
 
 //TODO 1: card rearrangement
 //TODO 2: add star-rating system?
@@ -27,8 +20,9 @@ const GameCard = ({ games }) => {
         boxShadow={"3xl"}
         rounded={"lg"}
         p={3}
-        overflow={"hidden"}>
-        <Link href={"/OdForOs"}>
+        overflow={"hidden"}
+      >
+        <Link href={games.link}>
           <Image src={games.image} objectFit={"fill"} h={"240px"} w={"460px"} />
 
           <Stack direction={"column"} mt={5}>
@@ -37,7 +31,8 @@ const GameCard = ({ games }) => {
               textTransform={"uppercase"}
               fontWeight={300}
               fontSize={"sm"}
-              letterSpacing={1.1}>
+              letterSpacing={1.1}
+            >
               {games.tagline}
             </Text>
             <Heading color={"white"} fontSize={"3xl"}>
